@@ -39,7 +39,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'movrec.movies',
     'movrec.accounts',
-    'django_cron'
 ]
 
 MIDDLEWARE = [
