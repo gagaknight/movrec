@@ -1,0 +1,7 @@
+import sys
+
+f = open('data/u.item',"r")
+
+for lines in f:
+  line = lines.strip().split('|')
+  print line[1]

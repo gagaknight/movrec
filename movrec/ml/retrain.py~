@@ -1,0 +1,16 @@
+import graphlab as gl
+
+f = open("data/ratings.csv","w")
+f.write("userId, movieId, rating\n")
+for item in ratings:
+    movieId = getattr(item, 'movieId')
+    userId = getattr(item, 'userId')
+    rating = getattr(item,'rating')
+    f.write(str(userId) + "," + str(movieId) + "," + str(rating)+"\n")
+f.close()
+
+items = gl.SFrame.read_csv('/home/chao-fu/mov-rec/movrec/data/movies.csv')
+actions = gl.SFrame.read_csv('/home/chao-fu/mov-rec/movrec/data/ratings.csv')
+actions = actions[actions['rating'] >=4 ]
+model = gl.recommender.create(actions, 'userId', 'movieId',target="rating")
+model.save("movie_model")
